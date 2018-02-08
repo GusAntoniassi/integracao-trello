@@ -1,17 +1,14 @@
 <?php
 
-use Zend\Expressive\Router\RouterInterface;
-use Zend\Expressive\Router\ZendRouter;
-
 return [
     'dependencies' => [
         'invokables' => [
 //            RouterInterface::class => Zend\Expressive\Router\FastRouteRouter::class,
         ],
         'factories' => [
-            RouterInterface::class => Zend\Expressive\Router\FastRouteRouterFactory::class,
+            \Zend\Expressive\Router\RouterInterface::class => Zend\Expressive\Router\FastRouteRouterFactory::class,
 
-            \App\Action\TestAction::class => App\Action\Factory\TestActionFactory::class
+            App\Action\TestAction::class => App\Action\Factory\TestActionFactory::class
         ],
     ],
     'routes' => [
@@ -28,7 +25,7 @@ return [
             'allowed_methods' => ['GET'],
         ],
         [
-            'name'            => 'home',
+            'name'            => 'teste',
             'path'            => '/teste',
             'middleware'      => App\Action\TestAction::class,
             'allowed_methods' => ['GET'],

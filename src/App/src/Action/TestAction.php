@@ -22,12 +22,33 @@ class TestAction implements ServerMiddlewareInterface
 
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
-        $entity = new \App\Entity\SprintQuadro();
-        $entity
-            ->setSprintId(1)
-            ->setQuadroId('abc');
+//        $sprintQuadro = new \App\Entity\SprintQuadro();
+//        $sprintQuadro
+//            ->setSprintId(1)
+//            ->setQuadroId('whoop');
+//
+//        $estoriaCartao = new \App\Entity\EstoriaCartao();
+//        $estoriaCartao
+//            ->setCartaoId('wew')
+//            ->setChecklistId(1)
+//            ->setEstoriaId(2)
+//            ->setSprintQuadro($sprintQuadro);
+//
+//
+//        $sprintQuadro->setEstoriaCartoes(new \Doctrine\Common\Collections\ArrayCollection([$estoriaCartao]));
+//
+//        $tarefaCheckItem = new \App\Entity\TarefaCheckItem();
+//
+//        $tarefaCheckItem
+//            ->setCheckitemId('abb')
+//            ->setTarefaId(1)
+//            ->setEstoriaCartao($estoriaCartao);
+//
+//        $estoriaCartao->setTarefaCheckItems(new \Doctrine\Common\Collections\ArrayCollection([$tarefaCheckItem]));
+//
+//        $this->entityManager->persist($tarefaCheckItem);
+//        $this->entityManager->flush();
 
-        $this->entityManager->persist($entity);
-        $this->entityManager->flush();
+        die('end');
     }
 }

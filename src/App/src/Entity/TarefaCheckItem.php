@@ -23,29 +23,22 @@ class TarefaCheckItem
     /**
      * @var integer
      * @Type("integer")
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="tarefa_id", type="integer")
      */
     private $tarefaId;
 
     /**
      * @var string
      * @Type("string")
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="checkitem_id", type="string")
      */
     private $checkitemId;
-
-    /**
-     * @var string
-     * @Type("string")
-     * @ORM\Column(type="string")
-     */
-    private $estoriaCartaoId;
 
     /**
      * @var \App\Entity\EstoriaCartao
      * @Type("App\Entity\EstoriaCartao")
      * @Exclude()
-     * @ORM\ManyToOne(targetEntity="App\Entity\EstoriaCartao", inversedBy="tarefaCheckItens")
+     * @ORM\ManyToOne(targetEntity="App\Entity\EstoriaCartao", inversedBy="tarefaCheckItens", cascade={"ALL"})
      * @ORM\JoinColumn(name="estoria_cartao_id", referencedColumnName="id")
      */
     private $estoriaCartao;
@@ -63,11 +56,6 @@ class TarefaCheckItem
     public function getCheckitemId()
     {
         return $this->checkitemId;
-    }
-
-    public function getEstoriaCartaoId()
-    {
-        return $this->estoriaCartaoId;
     }
 
     public function getEstoriaCartao(): \App\Entity\EstoriaCartao
@@ -90,12 +78,6 @@ class TarefaCheckItem
     public function setCheckitemId($checkitemId)
     {
         $this->checkitemId = $checkitemId;
-        return $this;
-    }
-
-    public function setEstoriaCartaoId($estoriaCartaoId)
-    {
-        $this->estoriaCartaoId = $estoriaCartaoId;
         return $this;
     }
 

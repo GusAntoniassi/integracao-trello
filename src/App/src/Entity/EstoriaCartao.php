@@ -4,6 +4,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\Exclude;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -45,15 +46,15 @@ class EstoriaCartao
      * @var \App\Entity\SprintQuadro
      * @Type("App\Entity\SprintQuadro")
      * @Exclude()
-     * @ORM\ManyToOne(targetEntity="App\Entity\SprintQuadro", inversedBy="estoriaCartoes")
+     * @ORM\ManyToOne(targetEntity="App\Entity\SprintQuadro", inversedBy="estoriaCartoes", cascade={"ALL"})
      * @ORM\JoinColumn(name="sprint_quadro_id", referencedColumnName="id")
      */
     private $sprintQuadro;
 
     /**
-     * @var \ArrayCollection
+     * @var ArrayCollection
      * @Type("ArrayCollection<App\Entity\TarefaCheckItem>")
-     * @ORM\OneToMany(targetEntity="TarefaCheckItem", mappedBy="estoriaCartao")
+     * @ORM\OneToMany(targetEntity="TarefaCheckItem", mappedBy="estoriaCartao", cascade={"ALL"})
      */
     private $tarefaCheckItems;
 
@@ -82,7 +83,7 @@ class EstoriaCartao
         return $this->sprintQuadro;
     }
 
-    public function getTarefaCheckItems(): \ArrayCollection
+    public function getTarefaCheckItems(): ArrayCollection
     {
         return $this->tarefaCheckItems;
     }
@@ -117,7 +118,7 @@ class EstoriaCartao
         return $this;
     }
 
-    public function setTarefaCheckItems(\ArrayCollection $tarefaCheckItems)
+    public function setTarefaCheckItems(ArrayCollection $tarefaCheckItems)
     {
         $this->tarefaCheckItems = $tarefaCheckItems;
         return $this;

@@ -53,10 +53,10 @@
         "clear-config-cache": "php bin/clear-config-cache.php",
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "serve": "php -S 0.0.0.0:8080 -t public public/index.php --timeout 0",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
         "upload-coverage": "coveralls -v",
-        "create-schema": "\"vendor/bin/doctrine.bat\" orm:schema-tool:create"
+        "create-schema": "\"vendor/bin/doctrine.bat\" orm:schema-tool:drop --force && \"vendor/bin/doctrine.bat\" orm:schema-tool:create"
     }
 }

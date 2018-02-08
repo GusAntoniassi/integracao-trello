@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\Exclude;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -36,9 +37,9 @@ class SprintQuadro
     private $quadroId;
 
     /**
-     * @var \ArrayCollection
+     * @var ArrayCollection
      * @Type("ArrayCollection<App\Entity\EstoriaCartao>")
-     * @ORM\OneToMany(targetEntity="EstoriaCartao", mappedBy="sprintQuadro")
+     * @ORM\OneToMany(targetEntity="EstoriaCartao", mappedBy="sprintQuadro", cascade={"ALL"})
      */
     private $estoriaCartoes;
     
@@ -57,7 +58,7 @@ class SprintQuadro
         return $this->quadroId;
     }
 
-    public function getEstoriaCartoes(): \ArrayCollection
+    public function getEstoriaCartoes(): ArrayCollection
     {
         return $this->estoriaCartoes;
     }
@@ -80,7 +81,7 @@ class SprintQuadro
         return $this;
     }
 
-    public function setEstoriaCartoes(\ArrayCollection $estoriaCartoes)
+    public function setEstoriaCartoes(ArrayCollection $estoriaCartoes)
     {
         $this->estoriaCartoes = $estoriaCartoes;
         return $this;
