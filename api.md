@@ -263,7 +263,7 @@ Retornará todos os itens da checklist "Tarefas" no cartão correspondente à es
 			"mensagem": "Erro ao consultar as estórias"
 		}
 		
-### Criar estória [POST]
+### Criar tarefa [POST]
 Criará um item na checklist "Tarefas" no cartão correspondente à estória.
 
 + Request Exemplo (application/json)
@@ -331,5 +331,94 @@ Editará o item da checklist no Trello.
 	
 ### Excluir tarefa [DELETE]
 Excluirá o item da checklist no Trello.
+	
++ Response 204		
+
+
+# Group Sistemas
+
+Cada sistema terá um time no trello, e todas as sprints serão quadros vinculados àquele time.
+
+## /sistemas [/sistemas]
+
+### Listar sistemas [GET]
+Retornará todos times cadastrados na API.
+	
++ Response 200 (application/json)
+
+		{
+			"???": "????",
+		}
+		
++ Response 500 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Erro ao consultar os times"
+		}
+		
+### Criar sistema [POST]
+Criará um time no Trello vinculado ao sistema.
+
++ Request Exemplo (application/json)
+
+		{
+			"idsistema": "21",
+			"nome": "B2B Atacado"
+		}
+	
++ Response 200 (application/json)
+
+		{
+			"status": "sucesso",
+			"mensagem": "Time criado com sucesso"
+		}
+		
++ Response 500 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Erro ao criar o time"
+		}
+		
+## /sistema [/sistema/{sistema_id}]
+
+
++ Parameters
+	+ sistema_id: 21 - ID do sistema no CCG
+
+### Editar sistema [PUT]
+Editará o time no Trello.
+
++ Request Exemplo (application/json)
+
+		{
+			"nome": "B2C Atacado"
+		}
+	
++ Response 200 (application/json)
+
+		{
+			"status": "sucesso",
+			"mensagem": "Time alterado com sucesso"
+		}
+		
++ Response 404 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Time não encontrado"
+		}
+			
++ Response 500 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Erro ao alterar o time"
+		}
+		
+	
+### Excluir time [DELETE]
+Excluirá o time no Trello, excluindo também todos os quadros vinculados a ele.
 	
 + Response 204		

@@ -22,6 +22,13 @@ class SistemaTime
     private $id;
 
     /**
+     * @var string
+     * @Type("string")
+     * @ORM\Column(type="string")
+     */
+    private $nome;
+
+    /**
      * @var integer
      * @Type("integer")
      * @ORM\Column(name="sistema_id", type="integer")
@@ -47,6 +54,11 @@ class SistemaTime
         return $this->id;
     }
 
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
     public function getSistemaId()
     {
         return $this->sistemaId;
@@ -65,6 +77,12 @@ class SistemaTime
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
+    }
+
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
         return $this;
     }
 
