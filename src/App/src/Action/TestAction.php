@@ -46,7 +46,15 @@ class TestAction implements ServerMiddlewareInterface
 //
 //        $estoriaCartao->setTarefaCheckItems(new \Doctrine\Common\Collections\ArrayCollection([$tarefaCheckItem]));
 //
-//        $this->entityManager->persist($tarefaCheckItem);
+//        $sistemaTime = new \App\Entity\SistemaTime();
+//        $sistemaTime
+//            ->setSistemaId(22)
+//            ->setTimeId('xxy')
+//            ->setSprintQuadros(new \Doctrine\Common\Collections\ArrayCollection([$sprintQuadro]));
+//
+//        $sprintQuadro->setSistemaTime($sistemaTime);
+//
+//        $this->entityManager->persist($sprintQuadro);
 //        $this->entityManager->flush();
 
         die('end');

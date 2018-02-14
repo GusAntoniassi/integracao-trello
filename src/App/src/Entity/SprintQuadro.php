@@ -42,6 +42,15 @@ class SprintQuadro
      * @ORM\OneToMany(targetEntity="EstoriaCartao", mappedBy="sprintQuadro", cascade={"ALL"})
      */
     private $estoriaCartoes;
+
+    /**
+     * @var \App\Entity\SistemaTime
+     * @Type("App\Entity\SistemaTime")
+     * @Exclude()
+     * @ORM\ManyToOne(targetEntity="App\Entity\SistemaTime", inversedBy="sprintQuadros", cascade={"ALL"})
+     * @ORM\JoinColumn(name="sistema_time_id", referencedColumnName="id")
+     */
+    private $sistemaTime;
     
     public function getId()
     {
@@ -63,6 +72,11 @@ class SprintQuadro
         return $this->estoriaCartoes;
     }
 
+    public function getSistemaTime(): \App\Entity\SistemaTime
+    {
+        return $this->sistemaTime;
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -84,6 +98,12 @@ class SprintQuadro
     public function setEstoriaCartoes(ArrayCollection $estoriaCartoes)
     {
         $this->estoriaCartoes = $estoriaCartoes;
+        return $this;
+    }
+
+    public function setSistemaTime(\App\Entity\SistemaTime $sprintQuadro)
+    {
+        $this->sistemaTime = $sprintQuadro;
         return $this;
     }
 }

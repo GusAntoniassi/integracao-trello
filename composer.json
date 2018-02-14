@@ -58,6 +58,6 @@
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
         "upload-coverage": "coveralls -v",
         "create-schema": "\"vendor/bin/doctrine.bat\" orm:schema-tool:drop --force && \"vendor/bin/doctrine.bat\" orm:schema-tool:create",
-		"build-blueprint": "aglio --theme-variables streak --theme-template triple --theme-full-width -i api.md -o index.html"
+        "build-blueprint": "aglio -t tanda --theme-template triple --theme-full-width -i api.md -o index.html"
     }
 }
