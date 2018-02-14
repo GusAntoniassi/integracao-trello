@@ -193,6 +193,30 @@ Criará um novo quadro no Trello, que será adicionado ao time vinculado ao `ids
 	+ sprint_id: 16 (integer) - ID da sprint no CCG
 	+ estoria_id: 129 (integer) - ID da estória no CCG
 
+### Buscar estória [GET]
+Retornará os detalhes do cartão no Trello.
+	
++ Response 200 (application/json)
+
+		{
+			"???": "????"
+		}
+		
++ Response 404 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Estória não encontrada"
+		}
+			
++ Response 500 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Erro ao buscar a estória"
+		}
+		
+
 ### Editar estória [PUT]
 Editará o cartão no Trello.
 
@@ -296,7 +320,31 @@ Criará um item na checklist "Tarefas" no cartão correspondente à estória.
 	+ sprint_id: 16 (integer) - ID da sprint no CCG
 	+ estoria_id: 129 (integer) - ID da estória no CCG
 	+ tarefa_id: 1666 (integer) - ID da tarefa no CCG
+	
+### Buscar tarefa [GET]
+Retornará os detalhes do item da checklist no Trello.
 
++ Response 200 (application/json)
+
+		{
+			"???": "????"
+		}
+		
++ Response 404 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Tarefa não encontrada"
+		}
+			
++ Response 500 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Erro ao buscar a tarefa"
+		}
+		
+	
 ### Editar tarefa [PUT]
 Editará o item da checklist no Trello.
 
@@ -387,6 +435,30 @@ Criará um time no Trello vinculado ao sistema.
 + Parameters
 	+ sistema_id: 21 - ID do sistema no CCG
 
+### Buscar sistema [GET]
+Retornará os detalhes do time no Trello.
+
++ Response 200 (application/json)
+
+		{
+			"???": "????"
+		}
+		
++ Response 404 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Time não encontrado"
+		}
+			
++ Response 500 (application/json)
+
+		{
+			"status": "erro",
+			"mensagem": "Erro ao buscar o time"
+		}
+		
+	
 ### Editar sistema [PUT]
 Editará o time no Trello.
 

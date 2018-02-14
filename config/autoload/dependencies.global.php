@@ -15,6 +15,7 @@ return [
         // key is the alias name, the value is the service to which it points.
         'aliases' => [
             'Zend\Expressive\Delegate\DefaultDelegate' => Delegate\NotFoundDelegate::class,
+            'client.default' => GuzzleHttp\Client::class,
         ],
         // Use 'invokables' for constructor-less services, or services that do
         // not require arguments to the constructor. Map a service name to the
@@ -36,6 +37,8 @@ return [
             Middleware\NotFoundHandler::class                => Container\NotFoundHandlerFactory::class,
             
             'doctrine.entity_manager.orm_default' => \ContainerInteropDoctrine\EntityManagerFactory::class,
+            JMS\Serializer\Serializer::class  => App\Container\JMSFactory::class,
+            GuzzleHttp\Client::class => App\Container\GuzzleFactory::class,
         ],
     ],
 ];
