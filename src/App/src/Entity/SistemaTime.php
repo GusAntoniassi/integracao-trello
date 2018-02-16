@@ -8,7 +8,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="sistema_time")
+ * @ORM\Table(name="sistema_time", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="sistema_time_constraint", columns={"sistema_id", "time_id"})
+ * })
  */
 class SistemaTime
 {

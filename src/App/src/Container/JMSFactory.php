@@ -6,9 +6,11 @@ namespace App\Container;
  *
  * @author lucas.patriarca
  */
+
 use JMS\Serializer\Accessor\DefaultAccessorStrategy;
 use JMS\Serializer\JsonSerializationVisitor;
 use JMS\Serializer\Naming\CamelCaseNamingStrategy;
+use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
 
@@ -22,15 +24,20 @@ class JMSFactory
         // Referências: http://php.net/manual/pt_BR/function.json-encode.php e
         // https://github.com/schmittjoh/serializer/issues/265
         $bitmask = 15;
-        $namingStrategy = new SerializedNameAnnotationStrategy(new CamelCaseNamingStrategy());
+        $namingStrategy = new SerializedNameAnnotationStrategy(new IdenticalPropertyNamingStrategy());
         $accessorStrategy = new DefaultAccessorStrategy();
-        $visitor = new JsonSerializationVisitor($namingStrategy, $accessorStrategy);
-        $visitor->setOptions($bitmask);
+
+        $serializationVisitor = new JsonSerializationVisitor($namingStrategy, $accessorStrategy);
+        $serializationVisitor->setOptions($bitmask);
+
+        $deserializationVisitor = new \JMS\Serializer\JsonDeserializationVisitor($namingStrategy);
 
         $serializer = SerializerBuilder::create()
             ->addDefaultSerializationVisitors()
             ->addDefaultDeserializationVisitors()
-            ->setSerializationVisitor('json', $visitor)
+            ->setSerializationVisitor('json', $serializationVisitor)
+            ->setDeserializationVisitor('json', $deserializationVisitor)
+            ->setPropertyNamingStrategy(new SerializedNameAnnotationStrategy(new IdenticalPropertyNamingStrategy()))
             ->build();
 
         return $serializer;

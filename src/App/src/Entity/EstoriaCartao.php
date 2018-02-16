@@ -8,7 +8,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="estoria_cartao")
+ * @ORM\Table(name="estoria_cartao", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="estoria_cartao_checklist_constraint", columns={"estoria_id", "cartao_id", "checklist_id"})
+ * })
  */
 class EstoriaCartao
 {

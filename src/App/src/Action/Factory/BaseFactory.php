@@ -8,12 +8,12 @@ class BaseFactory
     /**
      * @var \JMS\Serializer\Serializer
      */
-    private $serializer;
+    protected $serializer;
 
     /**
      * @var \Doctrine\ORM\EntityManager
      */
-    private $entityManager;
+    protected $entityManager;
 
     public function setUp(\Interop\Container\ContainerInterface $container)
     {

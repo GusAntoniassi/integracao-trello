@@ -9,7 +9,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="sprint_quadro")
+ * @ORM\Table(name="sprint_quadro", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="sprint_quadro_constraint", columns={"sprint_id", "quadro_id"})
+ * })
  */
 class SprintQuadro
 {

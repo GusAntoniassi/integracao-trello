@@ -7,7 +7,9 @@ use JMS\Serializer\Annotation\Exclude;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="tarefa_checkitem")
+ * @ORM\Table(name="tarefa_checkitem", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="tarefa_checkitem_constraint", columns={"tarefa_id", "checkitem_id"})
+ * })
  */
 class TarefaCheckItem
 {

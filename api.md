@@ -412,7 +412,7 @@ Criará um time no Trello vinculado ao sistema.
 
 		{
 			"idsistema": "21",
-			"nome": "B2B Atacado"
+			"idtrello": "gazintimeb2b"
 		}
 	
 + Response 200 (application/json)
