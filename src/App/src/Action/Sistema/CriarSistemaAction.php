@@ -34,11 +34,6 @@ class CriarSistemaAction implements MiddlewareInterface
 
         $this->sistemaService->criar($dados);
 
-        return new \Zend\Diactoros\Response\JsonResponse(
-            [
-                'status' => 'sucesso',
-                'mensagem' => 'Time criado com sucesso'
-            ]
-        );
+        return new \App\Response\SuccessResponse('Time criado com sucesso');
     }
 }

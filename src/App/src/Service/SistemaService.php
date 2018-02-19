@@ -1,6 +1,8 @@
 <?php
 namespace App\Service;
 
+use App\Exception;
+
 class SistemaService
 {
     /**
@@ -46,25 +48,35 @@ class SistemaService
     {
         $this->validator->validar($dados);
 
-        /**
-         * - Cadastrar um novo time no sistema
-            O usuário deverá adicionar o "CCG Bot" ao time
-            Depois fazer um POST em /times com os dados
-                    {
-                            "idsistema": 21,
-                            "nome": "gazintimeb2b"
-                    }
-            O nome do time está disponível na URL da página do time no trello (ex: https://trello.com/gazintimeb2b)
-            O sistema buscará todos os times que o usuário "CCG Bot" está cadastrado, percorrerá todos eles para encontrar o time com nome igual ao passado
-            Quando achar o time, gravará um registro na tabela sistema_time com os seguintes dados:
-                    id: auto inc.
-                    nome: displayName no trello
-                    sistema_id: idsistema passado
-                    time_id: id no trello (ex: 59e0e4421e07fa94aae0de7e)
-         */
-        
         $times = $this->trelloService->getTimes();
         $nomeTime = $dados->getIdtrello();
+        $time = $this->getTimeEscolhido($times, $nomeTime);
+
+        try {
+            $sistemaTime = new \App\Entity\SistemaTime();
+            $sistemaTime
+                ->setNome($time->getDisplayName())
+                ->setSistemaId($dados->getIdsistema())
+                ->setTimeId($dados->getIdtrello());
+
+            $this->entityManager->persist($sistemaTime);
+            $this->entityManager->flush();
+        } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+            throw new Exception\UniqueConstraintViolationException('Sistema já existe');
+        }
+    }
+
+    public function editar(\App\Entity\SistemaTime $sistema)
+    {
+
+    }
+
+    public function excluir($id)
+    {
+        
+    }
+
+    private function getTimeEscolhido(array $times, string $nomeTime) {
         $timeEscolhido = null;
 
         foreach ($times as $time) {
@@ -76,29 +88,9 @@ class SistemaService
         }
 
         if ($timeEscolhido === null) {
-            /**
-             * @TODO: Melhorar essa exceção
-             */
-            throw new \Exception('Time não encontrado');
+            throw new Exception\NotFoundException('Time não encontrado');
         }
 
-        $sistemaTime = new \App\Entity\SistemaTime();
-        $sistemaTime
-            ->setNome($time->getDisplayName())
-            ->setSistemaId($dados->getIdsistema())
-            ->setTimeId($dados->getIdtrello());
-
-        $this->entityManager->persist($sistemaTime);
-        $this->entityManager->flush();
-    }
-
-    public function editar(\App\Entity\SistemaTime $sistema)
-    {
-
-    }
-
-    public function excluir($id)
-    {
-        
+        return $timeEscolhido;
     }
 }
