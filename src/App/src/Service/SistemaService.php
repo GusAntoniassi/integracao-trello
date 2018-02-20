@@ -57,7 +57,7 @@ class SistemaService
             $sistemaTime
                 ->setNome($time->getDisplayName())
                 ->setSistemaId($dados->getIdsistema())
-                ->setTimeId($dados->getIdtrello());
+                ->setTimeId($time->getId());
 
             $this->entityManager->persist($sistemaTime);
             $this->entityManager->flush();
@@ -76,7 +76,7 @@ class SistemaService
         
     }
 
-    private function getTimeEscolhido(array $times, string $nomeTime) {
+    private function getTimeEscolhido(array $times, string $nomeTime) : \App\Model\Trello\Time {
         $timeEscolhido = null;
 
         foreach ($times as $time) {

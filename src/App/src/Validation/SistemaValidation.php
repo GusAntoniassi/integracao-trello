@@ -2,6 +2,7 @@
 namespace App\Validation;
 
 use Respect\Validation\Validator;
+use App\Exception;
 
 class SistemaValidation implements ValidationInterface
 {
@@ -24,7 +25,7 @@ class SistemaValidation implements ValidationInterface
             return true;
         }
 
-        throw new \InvalidArgumentException('Idsistema deve ser um número maior que 0');
+        throw new Exception\InvalidArgumentException('Idsistema deve ser um número maior que 0');
     }
 
     private function validaIdtrello()
@@ -33,6 +34,6 @@ class SistemaValidation implements ValidationInterface
             return true;
         }
 
-        throw new \InvalidArgumentException('Idtrello não pode ser vazio');
+        throw new Exception\InvalidArgumentException('Idtrello não pode ser vazio');
     }
 }
