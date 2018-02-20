@@ -5,6 +5,7 @@ class TrelloService
 {
     const API_URL = 'https://trello.com/1';
     const TIMES_ENDPOINT = '/members/ccgbot/organizations';
+    const QUADROS_ENDPOINT = '/boards/';
 
     /**
      * @var \GuzzleHttp\Client
@@ -47,5 +48,9 @@ class TrelloService
         }
 
         return $times;
+    }
+
+    public function criarQuadro() {
+        
     }
 }

@@ -38,12 +38,30 @@ Retornará todos os quadros do Trello relacionados às sprints daquele time.
 ### Criar sprint [POST]
 Criará um novo quadro no Trello, que será adicionado ao time vinculado ao `idsistema` passado no corpo da requisição. 
 
-**NOTA:** Se o time não for encontrado ele será criado automaticamente.
+Para referência no parâmetro `prefs`, consulte a [documentação do Trello](https://trello.readme.io/v1.0/reference#boardsid)
 
 + Request Exemplo (application/json)
 
 		{
-			"idsprint": "16"
+			"idsprint": "16",
+			"nome": "Sprint 1",
+			"prefs": {
+				"defaultLabels": true
+				"defaultLists": true,
+				"desc": "Descrição do quadro"
+				"idOrganization": "ID do time, pega o time do sistema por padrão",
+				"idBoardSource": "ID do quadro de referência, pega o quadro anterior do time por padrão",
+				"keepFromSource": "cards",
+				"powerUps": "",
+				"prefs_permissionLevel": "org",
+				"prefs_voting": "disabled",
+				"prefs_comments": "members",
+				"prefs_invitations": "members",
+				"prefs_selfJoin": true,
+				"prefs_cardCovers": true,
+				"prefs_background": "blue",
+				"prefs_cardAging": "regular"
+			}
 		}
 	
 + Response 200 (application/json)
