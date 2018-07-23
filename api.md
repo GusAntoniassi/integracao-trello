@@ -46,9 +46,9 @@ Para referência no parâmetro `prefs`, consulte a [documentação do Trello](ht
 			"idsprint": "16",
 			"nome": "Sprint 1",
 			"prefs": {
-				"defaultLabels": true
+				"defaultLabels": true,
 				"defaultLists": true,
-				"desc": "Descrição do quadro"
+				"desc": "Descrição do quadro",
 				"idOrganization": "ID do time, pega o time do sistema por padrão",
 				"idBoardSource": "ID do quadro de referência, pega o quadro anterior do time por padrão",
 				"keepFromSource": "cards",

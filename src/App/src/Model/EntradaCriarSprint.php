@@ -33,7 +33,7 @@ class EntradaCriarSprint
         return $this->nome;
     }
 
-    public function getPrefs()
+    public function getPrefs() : Trello\PrefsQuadro
     {
         return $this->prefs;
     }
@@ -50,7 +50,7 @@ class EntradaCriarSprint
         return $this;
     }
 
-    public function setPrefs($prefs)
+    public function setPrefs(Trello\PrefsQuadro $prefs)
     {
         $this->prefs = $prefs;
         return $this;

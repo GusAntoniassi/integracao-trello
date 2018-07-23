@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action\Sistema\Factory;
+namespace App\Action\Sprint\Factory;
 
 use App\Action\Factory\BaseFactory;
 
@@ -14,8 +14,8 @@ class CriarSprintFactory extends BaseFactory
         $trelloConfig = $container->get('config')['trello'];
 
         $trelloService = new \App\Service\TrelloService($client, $this->serializer, $trelloConfig);
-        $sistemaService = new \App\Service\SistemaService($this->entityManager, $trelloService);
+        $sprintService = new \App\Service\SprintService($this->entityManager, $trelloService);
 
-        return new \App\Action\Sistema\CriarSistemaAction($sistemaService, $this->serializer);
+        return new \App\Action\Sprint\CriarSprintAction($sprintService, $this->serializer);
     }
 }

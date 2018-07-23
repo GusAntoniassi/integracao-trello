@@ -56,62 +56,118 @@ class SprintValidation implements ValidationInterface
     }
 
     private function validaDefaultLabels() {
+        if (Validator::boolType()->validate($this->dados->getPrefs()->getDefaultLabels())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('DefaultLabels deve ser true ou false');
     }
 
     private function validaDefaultLists() {
+        if (Validator::boolType()->validate($this->dados->getPrefs()->getDefaultLists())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('DefaultLists deve ser true ou false');
     }
 
     private function validaDesc() {
+        if (Validator::length(1, 16384)->validate($this->dados->getPrefs()->getDesc())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('Desc não pode ser vazio');
     }
 
     private function validaIdOrganization() {
+        if (Validator::notEmpty()->validate($this->dados->getPrefs()->getIdOrganization())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('IdOrganization não pode ser vazio');
     }
 
     private function validaIdBoardSource() {
+        if (Validator::notEmpty()->validate($this->dados->getPrefs()->getIdBoardSource())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('IdBoardSource não pode ser vazio');
     }
 
     private function validaKeepFromSource() {
+        if (Validator::notEmpty()->validate($this->dados->getPrefs()->getKeepFromSource())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('KeepFromSource não pode ser vazio');
     }
 
     private function validaPowerUps() {
-
+        return true;
     }
 
     private function validaPrefsPermissionLevel() {
+        if (Validator::notEmpty()->validate($this->dados->getPrefs()->getPrefs_permissionLevel())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('Prefs_permissionLevel não pode ser vazio');
     }
 
     private function validaPrefsVoting() {
+        if (Validator::notEmpty()->validate($this->dados->getPrefs()->getPrefs_voting())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('Prefs_voting não pode ser vazio');
     }
 
     private function validaPrefsComments() {
+        if (Validator::notEmpty()->validate($this->dados->getPrefs()->getPrefs_comments())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('Prefs_comments não pode ser vazio');
     }
 
     private function validaPrefsInvitations() {
+        if (Validator::notEmpty()->validate($this->dados->getPrefs()->getPrefs_invitations())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('Prefs_invitations não pode ser vazio');
     }
 
     private function validaPrefsSelfJoin() {
+        if (Validator::boolType()->validate($this->dados->getPrefs()->getPrefs_selfJoin())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('Prefs_selfJoin deve ser true ou false');
     }
 
     private function validaPrefsCardCovers() {
+        if (Validator::boolType()->validate($this->dados->getPrefs()->getPrefs_cardCovers())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('Prefs_cardCovers deve ser true ou false');
     }
 
     private function validaPrefsBackground() {
+        if (Validator::notEmpty()->validate($this->dados->getPrefs()->getPrefs_background())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('Prefs_background não pode ser vazio');
     }
 
     private function validaPrefsCardAging() {
+        if (Validator::notEmpty()->validate($this->dados->getPrefs()->getPrefs_cardAging())) {
+            return true;
+        }
 
+        throw new Exception\InvalidArgumentException('Prefs_cardAging não pode ser vazio');
     }
 }

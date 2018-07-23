@@ -1,5 +1,5 @@
 <?php
-namespace App\Model;
+namespace App\Model\Trello;
 
 use JMS\Serializer\Annotation\Type;
 
@@ -9,13 +9,13 @@ class PrefsQuadro
      * @var boolean
      * @Type("boolean")
      */
-    private $defaultLabels;
+    private $defaultLabels = true;
 
     /**
      * @var boolean
      * @Type("boolean")
      */
-    private $defaultLists;
+    private $defaultLists = true;
 
     /**
      * @var string
@@ -39,7 +39,7 @@ class PrefsQuadro
      * @var string 
      * @Type("string")
      */
-    private $keepFromSource;
+    private $keepFromSource = 'cards';
     
     /**
      * @var string 
@@ -51,49 +51,49 @@ class PrefsQuadro
      * @var string 
      * @Type("string")
      */
-    private $prefs_permissionLevel;
+    private $prefs_permissionLevel = 'org';
     
     /**
      * @var string 
      * @Type("string")
      */
-    private $prefs_voting;
+    private $prefs_voting = 'disabled';
     
     /**
      * @var string 
      * @Type("string")
      */
-    private $prefs_comments;
+    private $prefs_comments = 'members';
     
     /**
      * @var string 
      * @Type("string")
      */
-    private $prefs_invitations;
+    private $prefs_invitations = 'members';
     
     /**
      * @var boolean
      * @Type("boolean")
      */
-    private $prefs_selfJoin;
+    private $prefs_selfJoin = true;
     
     /**
      * @var boolean
      * @Type("boolean")
      */
-    private $prefs_cardCovers;
+    private $prefs_cardCovers = true;
     
     /**
      * @var string 
      * @Type("string")
      */
-    private $prefs_background;
+    private $prefs_background = 'blue';
 
     /**
      * @var string
      * @Type("string")
      */
-    private $prefs_cardAging;
+    private $prefs_cardAging = 'regular';
 
     public function getDefaultLabels()
     {
@@ -170,13 +170,13 @@ class PrefsQuadro
         return $this->prefs_cardAging;
     }
 
-    public function setDefaultLabels($defaultLabels = true)
+    public function setDefaultLabels($defaultLabels)
     {
         $this->defaultLabels = $defaultLabels;
         return $this;
     }
 
-    public function setDefaultLists($defaultLists = true)
+    public function setDefaultLists($defaultLists)
     {
         $this->defaultLists = $defaultLists;
         return $this;
@@ -200,7 +200,7 @@ class PrefsQuadro
         return $this;
     }
 
-    public function setKeepFromSource($keepFromSource = 'cards')
+    public function setKeepFromSource($keepFromSource)
     {
         $this->keepFromSource = $keepFromSource;
         return $this;
@@ -212,49 +212,49 @@ class PrefsQuadro
         return $this;
     }
 
-    public function setPrefs_permissionLevel($prefs_permissionLevel = 'org')
+    public function setPrefs_permissionLevel($prefs_permissionLevel)
     {
         $this->prefs_permissionLevel = $prefs_permissionLevel;
         return $this;
     }
 
-    public function setPrefs_voting($prefs_voting = 'disabled')
+    public function setPrefs_voting($prefs_voting)
     {
         $this->prefs_voting = $prefs_voting;
         return $this;
     }
 
-    public function setPrefs_comments($prefs_comments = 'members')
+    public function setPrefs_comments($prefs_comments)
     {
         $this->prefs_comments = $prefs_comments;
         return $this;
     }
 
-    public function setPrefs_invitations($prefs_invitations = 'members')
+    public function setPrefs_invitations($prefs_invitations)
     {
         $this->prefs_invitations = $prefs_invitations;
         return $this;
     }
 
-    public function setPrefs_selfJoin($prefs_selfJoin = true)
+    public function setPrefs_selfJoin($prefs_selfJoin)
     {
         $this->prefs_selfJoin = $prefs_selfJoin;
         return $this;
     }
 
-    public function setPrefs_cardCovers($prefs_cardCovers = true)
+    public function setPrefs_cardCovers($prefs_cardCovers)
     {
         $this->prefs_cardCovers = $prefs_cardCovers;
         return $this;
     }
 
-    public function setPrefs_background($prefs_background = 'blue')
+    public function setPrefs_background($prefs_background)
     {
         $this->prefs_background = $prefs_background;
         return $this;
     }
 
-    public function setPrefs_cardAging($prefs_cardAging = 'regular')
+    public function setPrefs_cardAging($prefs_cardAging)
     {
         $this->prefs_cardAging = $prefs_cardAging;
         return $this;

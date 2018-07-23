@@ -3,7 +3,7 @@ namespace App\Service;
 
 use App\Exception;
 
-class SistemaService
+class SprintService
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -48,15 +48,32 @@ class SistemaService
     {
         $this->validator->validar($dados);
 
+        /* @var $sistemaTime \App\Entity\SistemaTime */
         $sistemaTime = $this->entityManager->find(\App\Entity\SistemaTime::class, $idsistema);
 
-        $this->trelloService->criarQuadro();
+        if (empty($sistemaTime)) {
+            throw new Exception\NotFoundException('Time não encontrado');
+        }
 
-        $sprintQuadro = new \App\Entity\SprintQuadro();
-        $sprintQuadro
+        $dados->getPrefs()
+            ->setIdOrganization($sistemaTime->getTimeId())
+            ->setIdBoardSource(0) // Ver dps pra pegar o quadro anterior
+            ;
+        
+        $quadroTrello = $this->trelloService->criarQuadro($idsistema, $dados);
+
+        $sistemaQuadro = new \App\Entity\SprintQuadro();
+        $sistemaQuadro
             ->setSprintId($dados->getIdsprint())
             ->setSistemaTime($sistemaTime)
-            ->setQuadroId($quadroId);
+            ->setQuadroId($quadroTrello) // VER
+            ;
+
+        dd($dados);
+//        $sistemaQuadro
+//            ->setSistemaId($dados->getIdsistema())
+//            ->setSistemaTime($sistemaTime)
+//            ->setQuadroId($quadroId);
 
 //        $this->validator->validar($dados);
 //
